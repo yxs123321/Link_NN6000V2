@@ -25,6 +25,37 @@ GOLANG_BRANCH="26.x"
 THEME_SET="argon"
 LAN_ADDR="10.0.0.1"
 HOSTNAME="iStoreOS"
+# 假设 radio0 是 5G，radio1 是 2.4G
+# 设置 5G WiFi
+uci set wireless.radio0.disabled='0'
+uci set wireless.radio0.htmode='VHT80'
+uci set wireless.radio0.channel='auto'
+uci set wireless.default_radio0.ssid='iStoreOS_5G'      # WiFi 名称
+uci set wireless.default_radio0.encryption='none'     # 加密方式 (WPA2-PSK)
+
+# 设置 2.4G WiFi (使用相同的 SSID 和密码以实现无缝漫游)
+uci set wireless.radio1.disabled='0'
+uci set wireless.radio1.htmode='HT40'
+uci set wireless.radio1.channel='auto'
+uci set wireless.default_radio1.ssid='iStoreOS_2.4G'
+uci set wireless.default_radio1.encryption='none'
+
+# 提交并应用
+uci commit wireless
+wifi reload
+
+# 1. 启用 5G WiFi 芯片和接口
+uci set wireless.radio0.disabled='0'
+uci set wireless.default_radio0.disabled='0'
+
+# 2. 启用 2.4G WiFi 芯片和接口
+uci set wireless.radio1.disabled='0'
+uci set wireless.default_radio1.disabled='0'
+
+# 3. 保存配置并生效
+wifi up
+uci commit wireless
+wifi reload
 
 SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 BASE_PATH=${BASE_PATH:-$(dirname "$SCRIPT_DIR")}
