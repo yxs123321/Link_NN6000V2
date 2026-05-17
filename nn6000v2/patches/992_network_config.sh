@@ -6,15 +6,13 @@
 
 # ==================== WiFi 配置 ====================
 # 5G WiFi 设置
-WIFI_5G_SSID="NN6000V2"
-WIFI_5G_KEY="12345678"
-WIFI_5G_CHANNEL=36
+WIFI_5G_SSID="iStoreOS_5G"
+WIFI_5G_CHANNEL=auto
 WIFI_5G_TXPOWER=24
 
 # 2.4G WiFi 设置
-WIFI_2G_SSID="NN6000V2"
-WIFI_2G_KEY="12345678"
-WIFI_2G_CHANNEL=1
+WIFI_2G_SSID="iStoreOS_2.4G"
+WIFI_2G_CHANNEL=auto
 WIFI_2G_TXPOWER=22
 
 # ==================== PPPoE 宽带配置 ====================
