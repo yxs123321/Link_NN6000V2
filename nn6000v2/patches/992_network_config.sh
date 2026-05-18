@@ -7,13 +7,13 @@
 # ==================== WiFi 配置 ====================
 # 5G WiFi 设置
 WIFI_5G_SSID="iStoreOS_5G"
-WIFI_5G_KEY=""
+WIFI_5G_KEY="12345678"
 WIFI_5G_CHANNEL=auto
 WIFI_5G_TXPOWER=24
 
 # 2.4G WiFi 设置
 WIFI_2G_SSID="iStoreOS_2.4G"
-WIFI_2G_KEY=""
+WIFI_2G_KEY="12345678"
 WIFI_2G_CHANNEL=auto
 WIFI_2G_TXPOWER=22
 
@@ -34,7 +34,7 @@ configure_wifi() {
 	local txpower=$5
 	local ssid=$6
 	local key=$7
-	local encryption=${8:-"none"}
+	local encryption=${8:-"psk2+ccmp"}
 	local now_encryption=$(uci get wireless.default_radio${radio}.encryption 2>/dev/null)
 	if [ -n "$now_encryption" ] && [ "$now_encryption" != "none" ]; then
 		return 0
@@ -61,8 +61,8 @@ EOF
 }
 
 link_nn6000v2_wifi_cfg() {
-    configure_wifi 0 '5g' $WIFI_5G_CHANNEL 'HE80' $WIFI_5G_TXPOWER "$WIFI_5G_SSID" "" "none"
-    configure_wifi 1 '2g' $WIFI_2G_CHANNEL 'HT20' $WIFI_2G_TXPOWER "$WIFI_2G_SSID" "" "none"
+	configure_wifi 0 '5g' $WIFI_5G_CHANNEL 'HE80' $WIFI_5G_TXPOWER "$WIFI_5G_SSID" "$WIFI_5G_KEY"
+	configure_wifi 1 '2g' $WIFI_2G_CHANNEL 'HT20' $WIFI_2G_TXPOWER "$WIFI_2G_SSID" "$WIFI_2G_KEY"
 }
 
 setup_pppoe() {
