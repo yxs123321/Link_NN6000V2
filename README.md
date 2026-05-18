@@ -16,8 +16,8 @@
 | 配置项          | 默认值         | 说明                                       |
 | ------------ | ----------- | ---------------------------------------- |
 | **LAN IP**   | `10.0.0.1`  | (nn6000v2/patches/991\_custom\_settings) |
-| **WiFi 名称**  | `NN6000V2`     | (nn6000v2/patches/992\_network\_config.sh) |
-| **WiFi 密码**  | `12345678` | 无线密码                                     |
+| **WiFi 名称**  | `iStoreOS`     | (nn6000v2/patches/992\_network\_config.sh) |
+| **WiFi 密码**  | `无` | 无线密码                                     |
 | **WiFi 状态**  | **禁用**      | 首次启动需手动开启                                |
 | **PPPoE 账号** | **未配置**     | (nn6000v2/patches/992\_network\_config.sh)    |
 | **PPPoE 状态** | **自动拨号**    | 配置账号密码后自动拨号，无需手动开启                                 |
