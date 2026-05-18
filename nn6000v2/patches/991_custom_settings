@@ -109,17 +109,6 @@ configure_zerotier_firewall() {
     uci add firewall forwarding 2>/dev/null
     uci set firewall.@forwarding[-1].src='lan' 2>/dev/null
     uci set firewall.@forwarding[-1].dest='zerotier' 2>/dev/null
-
-    # 启用 WiFi 芯片和接口
-    uci set wireless.radio0.disabled='0'
-    uci set wireless.default_radio0.disabled='0'
-    uci set wireless.radio1.disabled='0'
-    uci set wireless.default_radio1.disabled='0'
-    uci commit wireless
-
-    # 修改 IP 地址
-    uci set network.lan.ipaddr='192.168.68.1'
-    uci commit network
     
     # 提交配置
     uci commit firewall 2>/dev/null || {
